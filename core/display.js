@@ -943,6 +943,7 @@
         }
 
         var url = 'data:image/x-icon;base64,' + Base64.encode(cur);
-        target.style.cursor = 'url(' + url + ')' + hotx + ' ' + hoty + ', default';
+        // TODO: fix mouse style for now. Chrome mobile emulator sends bad mouse style.
+        // target.style.cursor = 'url(' + url + ')' + hotx + ' ' + hoty + ', default';
     };
 })();
