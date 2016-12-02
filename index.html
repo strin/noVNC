@@ -226,8 +226,8 @@
             WebUtil.init_logging(WebUtil.getConfigVar('logging', 'warn'));
             document.title = unescape(WebUtil.getConfigVar('title', 'noVNC'));
             // By default, use the host and port of server that served this file
-            host = WebUtil.getConfigVar('host', window.location.hostname);
-            port = WebUtil.getConfigVar('port', window.location.port);
+            host = WebUtil.getConfigVar('host', '127.0.0.1');
+            port = WebUtil.getConfigVar('port', 5901);
 
             // if port == 80 (or 443) then it won't be present and should be
             // set manually
@@ -240,7 +240,7 @@
                 }
             }
 
-            password = WebUtil.getConfigVar('password', '');
+            password = WebUtil.getConfigVar('password', 'openai');
             path = WebUtil.getConfigVar('path', 'websockify');
 
             // If a token variable is passed in, set the parameter in a cookie.
