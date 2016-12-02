@@ -226,8 +226,18 @@
             WebUtil.init_logging(WebUtil.getConfigVar('logging', 'warn'));
             document.title = unescape(WebUtil.getConfigVar('title', 'noVNC'));
             // By default, use the host and port of server that served this file
-            host = WebUtil.getConfigVar('host', '127.0.0.1');
-            port = WebUtil.getConfigVar('port', 5898);
+            host = WebUtil.getConfigVar('host', null);
+            port = WebUtil.getConfigVar('port', null);
+
+            if (!host) {
+                // infer vnc host and port from the server ip.
+                // assume websocket port is 1 above web vnc port.
+                var url = window.location.href;
+                var arr = url.split("/");
+                var address = url.split('/')[2];
+                host = address.split(':')[0];
+                port = parseInt(address.split(':')[1]) + 1;
+            }
 
             // if port == 80 (or 443) then it won't be present and should be
             // set manually
