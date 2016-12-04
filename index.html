@@ -236,7 +236,7 @@
                 var arr = url.split("/");
                 var address = url.split('/')[2];
                 host = address.split(':')[0];
-                port = 15900;
+                port = parseInt(address.split(':')[1]);
             }
 
             // if port == 80 (or 443) then it won't be present and should be
